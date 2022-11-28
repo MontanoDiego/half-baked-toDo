@@ -42,11 +42,26 @@ todoForm.addEventListener('submit', async (e) => {
 
 async function displayTodos() {
     // clear the container (.innerHTML = '')
-    // display the list of todos, 
+    todosEl.innerHTML = '';
+    // display the list of todos,
           // call render function, pass in state and complete handler function!
           // append to .todos
+    const todos = await getTodos();
+    if (todos) {
+        for (let todo of todos) {
+            const todoItem = renderTodo(todo);
+            todoItem.addEventListener('click', async () => {
+                await completeTodo();
+                await displayTodos();
+            });
+            todosEl.append(todoItem);
+        }
+    }
 }
 
+window.addEventListener('load', async () => {
+    displayTodos();
+});
 // add page load function
     // fetch the todos and store in state
     // call displayTodos

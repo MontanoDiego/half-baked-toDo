@@ -10,6 +10,11 @@ export async function createTodo(todo) {
 
     console.log(response.data, 'response');
     // once you have a response from supabase, comment this back in:
+    if (response.error) {
+        console.error(response.error.message);
+    } else {
+        return response.data;
+    }
     // return checkError(response);
 }
 

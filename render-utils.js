@@ -11,12 +11,12 @@ export function renderTodo(todo, handleComplete) {
     // add the 'todo' css class no matter what
     todoItem.classList.add ('todo');
     // put the todo's text into the p tag
-    todoItem.textContent = todo.value;
+    todoItem.textContent = todo.todo;
     // append stuff
     todoItemContainer.append(todoItem);
     // add event listener for click and call handleComplete function
     todoItemContainer.addEventListener('click', async () => {
-        handleComplete();
+        await handleComplete();
     });
     // return the div
     return todoItemContainer;
