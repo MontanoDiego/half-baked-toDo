@@ -3,7 +3,7 @@ export function renderTodo(todo, handleComplete) {
     const todoItemContainer = document.createElement('div');
     const todoItem = document.createElement('p');
     // depending on whether the todo is complete, give the div the appropriate css class ('complete' or 'incomplete')
-    if (handleComplete) {
+    if (todo.complete) {
         todoItemContainer.classList.add('complete');
     } else {
         todoItemContainer.classList.add('incomplete');
@@ -15,9 +15,6 @@ export function renderTodo(todo, handleComplete) {
     // append stuff
     todoItemContainer.append(todoItem);
     // add event listener for click and call handleComplete function
-    todoItemContainer.addEventListener('click', async () => {
-        await handleComplete();
-    });
     // return the div
     return todoItemContainer;
 }
